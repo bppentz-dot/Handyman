@@ -1,26 +1,429 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Handyman Contact Test</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Friendly Local Handyman</title>
+  <meta name="description" content="Reliable handyman services for drywall, simple wiring, gardening, small repairs, maintenance, and odd jobs." />
+
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --card: #ffffff;
+      --ink: #1f2933;
+      --muted: #5e6b76;
+      --accent: #9a4f2f;
+      --accent-dark: #6f3724;
+      --accent-soft: #fff2e8;
+      --green: #3f6f4f;
+      --line: #e4dbce;
+      --shadow: 0 14px 36px rgba(31, 41, 51, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(154, 79, 47, 0.15), transparent 28rem),
+        linear-gradient(180deg, #fbf7f1 0%, var(--bg) 100%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(980px, 100%);
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .hero-photo {
+      min-height: 245px;
+      background:
+        linear-gradient(rgba(31, 41, 51, 0.15), rgba(31, 41, 51, 0.35)),
+        url("handyman-photo.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+    }
+
+    .photo-note {
+      background: rgba(255,255,255,0.92);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--accent-dark);
+    }
+
+    .hero-content {
+      padding: 28px 22px 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .tagline {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.14rem;
+    }
+
+    .catchy {
+      margin: 18px 0 0;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .contact-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 2px solid var(--accent);
+      color: var(--accent-dark);
+      background: #fffaf5;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .contact-button.primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 8px 18px rgba(154, 79, 47, 0.26);
+    }
+
+    .contact-button:hover,
+    .contact-button:focus {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(31, 41, 51, 0.12);
+      outline: none;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .trust-item {
+      background: #f9f5ee;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .section {
+      background: var(--card);
+      margin-top: 18px;
+      padding: 24px 22px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(31, 41, 51, 0.06);
+    }
+
+    .section-header {
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .service-card {
+      border: 1px solid var(--line);
+      background: #fffdf9;
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 6px;
+      color: var(--green);
+      font-size: 1.08rem;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .fun-line {
+      background: var(--accent-soft);
+      border-left: 5px solid var(--accent);
+      padding: 16px;
+      border-radius: 16px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .photo-card {
+      min-height: 150px;
+      border-radius: 18px;
+      background: #fbfaf7;
+      border: 2px dashed #c8bfb4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .quote-box {
+      background: var(--green);
+      color: white;
+      border-radius: 22px;
+      padding: 24px 22px;
+      margin-top: 18px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .quote-box h2 {
+      color: white;
+    }
+
+    .quote-box p {
+      margin: 10px auto 18px;
+      max-width: 620px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .quote-box .contact-button {
+      background: white;
+      color: var(--green);
+      border-color: white;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 20px 6px 8px;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 680px) {
+      .hero {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .hero-photo {
+        min-height: 100%;
+      }
+
+      .contact-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .trust-strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Handyman Contact Test</h1>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-photo" aria-label="Handyman photo area">
+        <div class="photo-note">Replace with his photo: handyman-photo.jpg</div>
+      </div>
 
-  <p>
-    <a href="tel:+12364881127">📞 Call Now</a>
-  </p>
+      <div class="hero-content">
+        <div class="eyebrow">🔨 Friendly local help</div>
+        <h1>Your Friendly Local Handyman</h1>
+        <p class="tagline">Small repairs, odd jobs, yard help, drywall fixes, and practical home improvements done with care.</p>
+        <p class="catchy">No job too small — just the jobs you’ve been meaning to get done.</p>
 
-  <p>
-    <a href="sms:+12364881127">💬 Text Me</a>
-  </p>
+        <div class="contact-row" aria-label="Contact options">
+          <a class="contact-button primary" href="tel:+12364881127">📞 Call Now</a>
+          <a class="contact-button" href="sms:+12364881127">💬 Text Me</a>
+          <a class="contact-button" href="mailto:info@gmail.com">✉️ Email</a>
+        </div>
 
-  <p>
-    <a href="mailto:info@okanaganwineroute.ca">✉️ Email</a>
-  </p>
+        <div class="trust-strip">
+          <div class="trust-item">✅ Reliable & respectful</div>
+          <div class="trust-item">✅ Local service</div>
+          <div class="trust-item">✅ Free estimates</div>
+        </div>
+      </div>
+    </section>
 
-  <p>Phone/Text: 236-488-1127</p>
-  <p>Email: info@okanaganwineroute.ca</p>
+    <section class="section">
+      <div class="section-header">
+        <h2>How I Can Help</h2>
+        <p class="section-subtitle">A practical hand for the repairs, touch-ups, and outdoor jobs around the house.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <h3>🧱 Drywall & Patching</h3>
+          <p>Small holes, wall repairs, touch-ups, patching, sanding, and getting walls looking clean again.</p>
+        </article>
+
+        <article class="service-card">
+          <h3>💡 Simple Wiring Help</h3>
+          <p>Basic household tasks such as replacing fixtures or switches where permitted. Licensed electrical work should always be handled by a qualified electrician.</p>
+        </article>
+
+        <article class="service-card">
+          <h3>🌿 Gardening & Yard Help</h3>
+          <p>Seasonal cleanup, trimming, planting help, hauling, small outdoor fixes, and general yard maintenance.</p>
+        </article>
+
+        <article class="service-card">
+          <h3>🪚 Carpentry & Repairs</h3>
+          <p>Doors, trim, shelves, fence boards, decks, small builds, and general fix-it jobs around the home.</p>
+        </article>
+
+        <article class="service-card">
+          <h3>🎨 Painting & Touch-Ups</h3>
+          <p>Small painting jobs, scuffs, trim, patch-and-paint repairs, and freshening up tired spaces.</p>
+        </article>
+
+        <article class="service-card">
+          <h3>🧰 Odd Jobs</h3>
+          <p>Furniture assembly, hanging shelves, fixing squeaks, small repairs, and the little jobs that pile up.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>A Handy Neighbour You Can Call</h2>
+        <p class="section-subtitle">Friendly, careful, and practical help for homeowners who want things done properly.</p>
+      </div>
+
+      <div class="fun-line">
+        Got a wobbly shelf, a tired fence, a mystery squeak, or a wall that lost a fight with a doorknob? Send a text and let’s get it fixed.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Recent Work</h2>
+        <p class="section-subtitle">Add a few before-and-after photos here to build trust quickly.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="photo-card">Before / After Photo 1</div>
+        <div class="photo-card">Deck, fence, or yard photo</div>
+        <div class="photo-card">Drywall or repair photo</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Service Area</h2>
+        <p class="section-subtitle">Oliver, Osoyoos, OK Falls, Penticton, and surrounding area.</p>
+      </div>
+      <p>If you are nearby and have a small repair or home project, call or text to ask about availability.</p>
+    </section>
+
+    <section class="quote-box">
+      <h2>Need a Small Job Done?</h2>
+      <p>Send a quick text with a photo of the job. I’ll let you know if I can help and arrange a time that works.</p>
+      <a class="contact-button" href="sms:+12364881127">💬 Text a Photo or Question</a>
+    </section>
+
+    <p class="footer">
+      Call or text: 236-488-1127 · Email: info@gmail.com
+      <br />
+      <span class="small-note">Tip: add this page link to a QR code on the business card.</span>
+    </p>
+  </main>
 </body>
 </html>
